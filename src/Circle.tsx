@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 // 인터페이스란?
@@ -27,6 +28,11 @@ const Container = styled.div<CircleProps>`
 // }
 
 function Circle({ bgColor, borderColor, text = 'default text' }: CircleProps) {
+  // type script는 state의 초기값을 토대로 데이터 타입을 추론함
+  // 해당 타입으로 고정시켜서 쭉 사용함
+  // 만약 다른 타입으로 바꿔서 사용하고 싶으면? - useState뒤에 타입 두개 설정
+  const [counter, setCounter] = useState<number | string>(0);
+
   return (
     <Container bgColor={bgColor} borderColor={borderColor ?? bgColor}>
       {text}
